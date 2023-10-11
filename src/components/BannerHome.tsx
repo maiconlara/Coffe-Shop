@@ -1,6 +1,6 @@
-import { Text, VStack, Image, HStack } from 'native-base'
+import { Text, VStack, Image, HStack } from "native-base";
 
-import Coffee from '@assets/coffee.png';
+import Coffee from "../assets/coffee.png";
 
 export function BannerHome() {
   return (
@@ -26,5 +26,5 @@ export function BannerHome() {
       </VStack>
       <Image source={Coffee} alt="coffee" size="xl" />
     </HStack>
-  )
+  );
 }

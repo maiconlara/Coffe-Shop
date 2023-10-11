@@ -7,7 +7,6 @@ interface CoffeeCardProps {
   navigate: () => void;
 }
 
-
 const CoffeeCard = ({ data, navigate }: CoffeeCardProps) => {
   return (
     <Box>
@@ -18,7 +17,7 @@ const CoffeeCard = ({ data, navigate }: CoffeeCardProps) => {
               uri: data.img,
             }}
             alt="coffe"
-            size={160}
+            size={140}
             borderRadius={12}
           />
           <Text fontSize="md" fontFamily="text" fontWeight="700" color="black">
@@ -38,5 +37,5 @@ const CoffeeCard = ({ data, navigate }: CoffeeCardProps) => {
       </Pressable>
     </Box>
   );
-}
+};
 export default CoffeeCard;
