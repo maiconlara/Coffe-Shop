@@ -4,6 +4,7 @@ import {
   Roboto_700Bold,
 } from "@expo-google-fonts/roboto";
 import { BaiJamjuree_700Bold } from "@expo-google-fonts/bai-jamjuree";
+import { Urbanist_400Regular, Urbanist_700Bold} from "@expo-google-fonts/urbanist";
 import { Stack } from "expo-router";
 import { View } from "react-native";
 import { StatusBar } from "expo-status-bar";
@@ -13,6 +14,8 @@ export default function Layout() {
     Roboto_400Regular,
     Roboto_700Bold,
     BaiJamjuree_700Bold,
+    Urbanist_400Regular,
+    Urbanist_700Bold,
   });
 
   if (!isLoadedFonts) {
