@@ -45,6 +45,13 @@ export default function Layout() {
               headerShown: false,
             }}
           />
+
+          <Stack.Screen
+            name="CoffeeShop/index"
+            options={{
+              headerShown: false,
+            }}
+          />
         </Stack>
       </View>
     </NativeBaseProvider>

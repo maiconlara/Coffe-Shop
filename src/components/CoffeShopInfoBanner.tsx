@@ -9,7 +9,6 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faHeart, faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import ShareBtn from "./ShareButton";
 
 interface CoffeeShopInfoBannerProps {
   goBack: () => void;
@@ -54,7 +53,6 @@ const CoffeShopInfoBanner = ({ goBack }: CoffeeShopInfoBannerProps) => {
               />
             </Circle>
           </Pressable>
-          <ShareBtn />
         </HStack>
       </HStack>
     </Box>

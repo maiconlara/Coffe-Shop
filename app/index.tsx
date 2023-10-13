@@ -1,7 +1,7 @@
 import React from "react";
 import { FlatList, ScrollView, View, VStack } from "native-base";
 import { coffeeShops, Drinks } from "../src/mocks/index";
-import { router } from "expo-router";
+import { handleNavigate, goBack } from "../src/utils/handleNavigate";
 
 import HeaderHome from "../src/components/HeaderHome";
 import { BannerHome } from "../src/components/BannerHome";
@@ -11,7 +11,6 @@ import CoffeeCard from "../src/components/CoffeeCard";
 
 import { CoffeeDrinks } from "../src/interfaces/coffeeDrinks";
 import { CoffeeShops } from "../src/interfaces/coffeeShops";
-import { Text, TouchableOpacity } from "react-native";
 
 export default function App() {
   return (
@@ -19,14 +18,11 @@ export default function App() {
       <HeaderHome />
       <ScrollView h={"full"}>
         <BannerHome />
-        <TouchableOpacity onPress={() => router.push("/EmployeeList")}>
-          <Text>EmployeeList</Text>
-        </TouchableOpacity>
         <SwiperTitle title="Cafeterias por perto" />
         <FlatList
           data={coffeeShops}
           renderItem={({ item }) => (
-            <CoffeeShopCard data={item} navigate={() => {}} />
+            <CoffeeShopCard data={item} navigate={() => handleNavigate("CoffeeShop")} />
           )}
           keyExtractor={(item: CoffeeShops) => item.id.toString()}
           horizontal
@@ -44,7 +40,7 @@ export default function App() {
           paddingBottom={200}
         >
           {Drinks.map((item: CoffeeDrinks) => (
-            <CoffeeCard key={item.id} data={item} navigate={() => {}} />
+            <CoffeeCard key={item.id} data={item} navigate={() => handleNavigate("Order")} />
           ))}
         </View>
       </ScrollView>
