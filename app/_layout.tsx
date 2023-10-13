@@ -52,6 +52,12 @@ export default function Layout() {
               headerShown: false,
             }}
           />
+          <Stack.Screen
+            name="Order/index"
+            options={{
+              headerShown: false,
+            }}
+          />
         </Stack>
       </View>
     </NativeBaseProvider>
