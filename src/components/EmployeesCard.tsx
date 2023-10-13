@@ -7,7 +7,7 @@ interface EmployeesCardProps {
 
 const EmployeesCard = ({ data }: EmployeesCardProps) => {
   return (
-    <Box>
+    <Box paddingBottom={4}>
       <Pressable>
         <HStack alignItems="center" space={4} minWidth={120} marginTop={2}>
           <Image
@@ -16,7 +16,7 @@ const EmployeesCard = ({ data }: EmployeesCardProps) => {
             }}
             alt="employees"
             size={75}
-            borderRadius={"100%"}
+            borderRadius={9999}
           />
           <Text fontSize="md" fontFamily="text" fontWeight="700" color="black">
             {data?.firstName} {data?.lastName}

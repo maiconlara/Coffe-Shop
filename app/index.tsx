@@ -1,7 +1,7 @@
 import React from "react";
 import { FlatList, ScrollView, View, VStack } from "native-base";
-// import { coffeeShops, Drinks } from "@mocks/index";
 import { coffeeShops, Drinks } from "../src/mocks/index";
+import { router } from "expo-router";
 
 import HeaderHome from "../src/components/HeaderHome";
 import { BannerHome } from "../src/components/BannerHome";
