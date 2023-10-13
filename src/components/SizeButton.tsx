@@ -3,35 +3,26 @@ import { Text, Pressable, Center } from "native-base";
 import Cup from "../assets/coffee-cups.svg";
 import { useState } from "react";
 
+interface SizeButtonProps {
+  title: string;
+  size: number;
+  price: string;
+  isSelected?: boolean;
+  onPress?: () => void;
+}
+
 const SizeButton = ({
   title,
   size,
   price,
-}: {
-  title: string;
-  size: number;
-  price: string;
-}) => {
-  const [isPressed, setIsPressed] = useState(false);
-  function borderColors() {
-    if (isPressed) {
-      return "emerald.500";
-    } else {
-      return "gray.300";
-    }
-  }
-  function handlePress() {
-    if (isPressed) {
-      setIsPressed(false);
-    } else {
-      setIsPressed(true);
-    }
-  }
+  isSelected,
+  onPress,
+}: SizeButtonProps) => {
   return (
-    <Pressable onPress={handlePress}>
+    <Pressable onPress={onPress}>
       <Center
         borderWidth={1}
-        borderColor={borderColors()}
+        borderColor={isSelected ? "emerald.500" : "gray.300"}
         py={4}
         px={2}
         borderRadius={8}

@@ -23,17 +23,12 @@ import {
 } from "native-base";
 import { useCallback, useState } from "react";
 import { TouchableOpacity } from "react-native";
+import DrinkInformation from "../../src/components/OrderComponents/DrinkInformation";
+import QuantityContainer from "../../src/components/OrderComponents/QuantityContainer";
+import TemperatureContainer from "../../src/components/OrderComponents/TemperatureContainer";
+import SizeContainer from "../../src/components/OrderComponents/SizeContainer";
 
 const Order = () => {
-  const [quantity, setQuantity] = useState(1);
-
-  const handleIncrement = useCallback(() => {
-    setQuantity((prevQuantity) => prevQuantity + 1);
-  }, []);
-
-  const handleDecrement = useCallback(() => {
-    setQuantity((prevQuantity) => Math.max(prevQuantity - 1, 1));
-  }, []);
   return (
     <VStack paddingBottom={100}>
       <StatusBar
@@ -59,69 +54,12 @@ const Order = () => {
           justifyContent={"space-between"}
           alignItems={"center"}
         >
-          <VStack>
-            <Text fontSize="2xl" fontFamily="text" fontWeight="700">
-              Drink
-            </Text>
-            <Text fontSize="md" fontFamily="text" fontWeight="400">
-              R$ 5.00
-            </Text>
-          </VStack>
-          <HStack>
-            <TouchableOpacity onPress={handleDecrement}>
-              <Center
-                borderWidth={1}
-                borderColor={"green.500"}
-                padding={2}
-                borderRadius={8}
-              >
-                <FontAwesomeIcon icon={faMinus} size={16} color="#22c55e" />
-              </Center>
-            </TouchableOpacity>
-            <Text fontSize="xl" fontFamily="text" fontWeight="700" px={4}>
-              {quantity}
-            </Text>
-            <TouchableOpacity onPress={handleIncrement}>
-              <Center
-                borderWidth={1}
-                borderColor={"green.500"}
-                padding={2}
-                borderRadius={8}
-              >
-                <FontAwesomeIcon icon={faPlus} size={16} color="#22c55e" />
-              </Center>
-            </TouchableOpacity>
-          </HStack>
+          <DrinkInformation />
+          <QuantityContainer />
         </HStack>
-        {/* <VStack
-          py={4}
-          borderBottomWidth={2}
-          borderBottomColor={"gray.300"}
-          space={2}
-        >
-          <Text fontSize="md" fontFamily="text" fontWeight="700">
-            Disponível
-          </Text>
-          <HStack space={4}>
-            <TemperatureButton title="Quente" isHot />
-            <TemperatureButton title="Gelado" />
-          </HStack>
-        </VStack> */}
-        {/* <VStack
-          py={4}
-          borderBottomWidth={2}
-          borderBottomColor={"gray.300"}
-          space={2}
-        >
-          <Text fontSize="md" fontFamily="text" fontWeight="700">
-            Tamanho
-          </Text>
-          <HStack space={4}>
-            <SizeButton title="Pequeno" size={18} price="Free" />
-            <SizeButton title="Médio" size={24} price="+ R$ 1.00" />
-            <SizeButton title="Grande" size={36} price="+ R$ 2.00" />
-          </HStack>
-        </VStack>
+        <TemperatureContainer />
+        <SizeContainer />
+        {/* 
         <VStack
           py={4}
           space={2}
