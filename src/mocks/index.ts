@@ -129,7 +129,7 @@ export const typesOfMilk = [
   {
     id: 1,
     name: "Leite Integral",
-    price: 2,
+    price: 0,
   },
   {
     id: 2,

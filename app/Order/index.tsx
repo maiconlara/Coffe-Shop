@@ -27,6 +27,7 @@ import DrinkInformation from "../../src/components/OrderComponents/DrinkInformat
 import QuantityContainer from "../../src/components/OrderComponents/QuantityContainer";
 import TemperatureContainer from "../../src/components/OrderComponents/TemperatureContainer";
 import SizeContainer from "../../src/components/OrderComponents/SizeContainer";
+import MilkType from "../../src/components/OrderComponents/MilkType";
 
 const Order = () => {
   return (
@@ -59,20 +60,9 @@ const Order = () => {
         </HStack>
         <TemperatureContainer />
         <SizeContainer />
+        <MilkType />
         {/* 
-        <VStack
-          py={4}
-          space={2}
-          borderBottomWidth={2}
-          borderBottomColor={"gray.300"}
-        >
-          <OptionalTitle title="Leite" />
-          <Radio.Group name="milkType">
-            {typesOfMilk.map((type) => (
-              <Optional title={type.name} price={type.price} key={type.id} />
-            ))}
-          </Radio.Group>
-        </VStack>
+      
         <VStack
           py={4}
           space={2}
