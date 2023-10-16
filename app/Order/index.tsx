@@ -28,6 +28,8 @@ import QuantityContainer from "../../src/components/OrderComponents/QuantityCont
 import TemperatureContainer from "../../src/components/OrderComponents/TemperatureContainer";
 import SizeContainer from "../../src/components/OrderComponents/SizeContainer";
 import MilkType from "../../src/components/OrderComponents/MilkType";
+import EssenceType from "../../src/components/OrderComponents/EssenceType";
+import Toppings from "../../src/components/OrderComponents/Toppings";
 
 const Order = () => {
   return (
@@ -61,34 +63,10 @@ const Order = () => {
         <TemperatureContainer />
         <SizeContainer />
         <MilkType />
+        <EssenceType />
+        <Toppings />
         {/* 
-      
-        <VStack
-          py={4}
-          space={2}
-          borderBottomWidth={2}
-          borderBottomColor={"gray.300"}
-        >
-          <OptionalTitle title="Essências" />
-          <Radio.Group name="essenceType">
-            {typesOfEssence.map((type) => (
-              <Optional title={type.name} price={type.price} key={type.id} />
-            ))}
-          </Radio.Group>
-        </VStack>
-        <VStack
-          py={4}
-          space={2}
-          borderBottomWidth={2}
-          borderBottomColor={"gray.300"}
-        >
-          <OptionalTitle title="Topping" />
-          <Radio.Group name="Topping">
-            {topping.map((type) => (
-              <Optional title={type.name} price={type.price} key={type.id} />
-            ))}
-          </Radio.Group>
-        </VStack>
+
         <VStack py={4} space={2}>
           <Text fontSize="md" fontFamily="text" fontWeight="700">
             Observações

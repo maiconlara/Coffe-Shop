@@ -156,31 +156,37 @@ export const typesOfMilk = [
 export const typesOfEssence = [
   {
     id: 1,
+    name: "Sem Essência",
+    price: 0,
+  },
+  {
+    id: 2,
     name: "Essência de Baunilha",
     price: 2,
   },
   {
-    id: 2,
+    id: 3,
     name: "Essência de Caramelo",
     price: 2,
   },
   {
-    id: 3,
+    id: 4,
     name: "Essência de Chocolate",
     price: 3,
   },
   {
-    id: 4,
+    id: 5,
     name: "Essência de Amêndoa",
     price: 3,
   },
+
 ];
 
 export const topping = [
   {
     id: 1,
-    name: "Canela",
-    price: 2,
+    name: "Nenhum",
+    price: 0,
   },
   {
     id: 2,
