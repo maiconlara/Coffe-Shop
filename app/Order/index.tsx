@@ -30,6 +30,7 @@ import SizeContainer from "../../src/components/OrderComponents/SizeContainer";
 import MilkType from "../../src/components/OrderComponents/MilkType";
 import EssenceType from "../../src/components/OrderComponents/EssenceType";
 import Toppings from "../../src/components/OrderComponents/Toppings";
+import Observations from "../../src/components/OrderComponents/Observations";
 
 const Order = () => {
   return (
@@ -65,25 +66,10 @@ const Order = () => {
         <MilkType />
         <EssenceType />
         <Toppings />
+        <Observations />
+
         {/* 
 
-        <VStack py={4} space={2}>
-          <Text fontSize="md" fontFamily="text" fontWeight="700">
-            Observações
-          </Text>
-          <TextArea
-            h={32}
-            placeholder="Adicione as observações do seu pedido aqui"
-            w="100%"
-            autoCompleteType={"off"}
-            borderWidth={0}
-            fontFamily={"text"}
-            size={"md"}
-            placeholderTextColor={"gray.400"}
-            backgroundColor={"gray.200"}
-            _focus={{ bg: "green.200" }}
-          />
-        </VStack>
         <HStack alignItems={"center"} paddingBottom={100}>
           <VStack w={"1/4"}>
             <Text
