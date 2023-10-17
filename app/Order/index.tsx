@@ -31,6 +31,7 @@ import MilkType from "../../src/components/OrderComponents/MilkType";
 import EssenceType from "../../src/components/OrderComponents/EssenceType";
 import Toppings from "../../src/components/OrderComponents/Toppings";
 import Observations from "../../src/components/OrderComponents/Observations";
+import BillingContainer from "../../src/components/OrderComponents/BillingContainer";
 
 const Order = () => {
   return (
@@ -67,27 +68,7 @@ const Order = () => {
         <EssenceType />
         <Toppings />
         <Observations />
-
-        {/* 
-
-        <HStack alignItems={"center"} paddingBottom={100}>
-          <VStack w={"1/4"}>
-            <Text
-              fontSize="xs"
-              fontFamily="text"
-              fontWeight="400"
-              color={"gray.500"}
-            >
-              Valor total
-            </Text>
-            <Text fontSize="lg" fontFamily="text" fontWeight="700">
-              R$ 15.00
-            </Text>
-          </VStack>
-          <Button borderRadius="full" colorScheme="success" w={"3/4"}>
-            Adicionar
-          </Button>
-        </HStack> */}
+        <BillingContainer />
       </ScrollView>
     </VStack>
   );
