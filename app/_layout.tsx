@@ -58,6 +58,12 @@ export default function Layout() {
               headerShown: false,
             }}
           />
+          <Stack.Screen
+            name="RatingPage/index"
+            options={{
+              headerShown: false,
+            }}
+          />
         </Stack>
       </View>
     </NativeBaseProvider>
