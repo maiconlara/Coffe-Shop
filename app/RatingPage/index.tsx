@@ -6,6 +6,7 @@ import { faStar, faStarHalfStroke } from '@fortawesome/free-solid-svg-icons'
 import Comment from '../../src/components/Comment';
 import { Comments } from '../../src/interfaces/comments';
 import { comments } from '../../src/mocks';
+import { goBack } from '../../src/utils/handleNavigate';
 
 const Rating = [
     {
@@ -32,6 +33,16 @@ const Rating = [
 
 const RatingPage = () => {
 
+  function ratingAverage() {
+    const totalReviews = Rating.reduce((acc, item) => {
+      return acc + item.totalReviews
+    }, 0)
+    const totalStars = Rating.reduce((acc, item) => {
+      return acc + item.totalReviews * item.id
+    }, 0)
+    const average = totalStars / totalReviews
+    return average
+  }
     return (
   <VStack paddingBottom={325}>
       <StatusBar
@@ -39,7 +50,7 @@ const RatingPage = () => {
         backgroundColor="transparent"
         translucent
       />
-      <Header goBack={} title="Fotos e avaliações" />
+      <Header goBack={goBack} title="Fotos e avaliações" />
       <VStack px={8}>
         <HStack
           borderBottomWidth={2}
