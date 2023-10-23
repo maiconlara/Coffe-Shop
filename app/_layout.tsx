@@ -40,12 +40,7 @@ export default function Layout() {
             }}
           />
 
-          <Stack.Screen
-            name="EmployeeList/index"
-            options={{
-              headerShown: false,
-            }}
-          />
+        
 
           <Stack.Screen
             name="CoffeeShop/index"
