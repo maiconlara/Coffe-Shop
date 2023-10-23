@@ -109,7 +109,7 @@ const CoffeeShop = () => {
             </HStack>
             <FontAwesomeIcon icon={faChevronRight} color="#71717a" />
           </HStack>
-          <Pressable onPress={() => handleNavigate("EmployeeList")}>
+          <Pressable>
             <HStack
               justifyContent="space-between"
               alignItems="center"
