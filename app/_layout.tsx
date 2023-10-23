@@ -8,6 +8,7 @@ import { Stack } from "expo-router";
 import { View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { fonts } from "../src/fonts";
+import React from "react";
 
 export default function Layout() {
   const [isLoadedFonts] = useFonts({

@@ -7,6 +7,7 @@ import { Employee } from "../../src/interfaces/employees";
 import { router } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { View, ActivityIndicator } from "react-native";
+import React from "react";
 
 interface ApiResponse {
   data: Employee[];

@@ -8,6 +8,7 @@ import { Comments } from '../../src/interfaces/comments';
 import { comments } from '../../src/mocks';
 import { goBack } from '../../src/utils/handleNavigate';
 import RatingContainer from '../../src/components/RatingComponents/RatingContainer';
+import React from 'react';
 
 
 
