@@ -11,15 +11,10 @@ interface RatingContainerProps {
 
 const RatingContainer = ({ rating }: RatingContainerProps) => {
   function ratingAverage() {
-    const totalReviews = rating.reduce((acc, item) => {
-      return acc + item.totalReviews;
-    }, 0);
-    const totalStars = rating.reduce((acc, item) => {
-      return acc + item.totalReviews * item.id;
-    }, 0);
-    const average = totalStars / totalReviews;
-    return average;
-  }
+  const totalReviews = rating.reduce((acc, item) => acc + item.totalReviews, 0);
+  const totalStars = rating.reduce((acc, item) => acc + item.totalReviews * item.id, 0);
+  return totalStars / totalReviews;
+}
   return (
     <HStack
       borderBottomWidth={2}
