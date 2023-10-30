@@ -109,28 +109,6 @@ const CoffeeShop = () => {
             </HStack>
             <FontAwesomeIcon icon={faChevronRight} color="#71717a" />
           </HStack>
-          <Pressable>
-            <HStack
-              justifyContent="space-between"
-              alignItems="center"
-              paddingBottom={4}
-              borderBottomWidth={2}
-              borderBottomColor={"gray.200"}
-            >
-              <HStack space={2} alignItems="center">
-                <FontAwesomeIcon icon={faUser} color="#22c55e" size={24} />
-                <Text
-                  fontSize="lg"
-                  fontFamily="text"
-                  fontWeight="700"
-                  color="black"
-                >
-                  Nossos colaboradores
-                </Text>
-              </HStack>
-              <FontAwesomeIcon icon={faChevronRight} color="#71717a" />
-            </HStack>
-          </Pressable>
           <View
             flexDirection="row"
             flexWrap="wrap"
