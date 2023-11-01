@@ -40,7 +40,12 @@ export default function Layout() {
             }}
           />
 
-        
+          <Stack.Screen
+            name="Home/index"
+            options={{
+              headerShown: false,
+            }}
+          />
 
           <Stack.Screen
             name="CoffeeShop/index"
