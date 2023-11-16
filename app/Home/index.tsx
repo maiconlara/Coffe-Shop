@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
 import { FlatList, ScrollView, View, VStack } from "native-base";
 import { coffeeShops, Drinks } from "../../src/mocks/index";
 import { handleNavigate, goBack } from "../../src/utils/handleNavigate";
-
 import HeaderHome from "../../src/components/HeaderHome";
 import { BannerHome } from "../../src/components/BannerHome";
 import CoffeeShopCard from "../../src/components/CoffeeShopCard";
@@ -12,17 +12,34 @@ import CoffeeCard from "../../src/components/CoffeeCard";
 import { CoffeeDrinks } from "../../src/interfaces/coffeeDrinks";
 import { CoffeeShops } from "../../src/interfaces/coffeeShops";
 
-export default function Home() {
+import { CoffeeShop, getCoffeeShops } from "../../src/utils/getCoffeeShops";
+
+const Home = () => {
+  const [coffeeShops, setCoffeeShops] = useState<CoffeeShop[]>([]);
+
+  useEffect(() => {
+    getCoffeeShops().then((data) => {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        setCoffeeShops(data.result);
+      }
+    });
+  }, []);
+
   return (
     <VStack safeAreaBottom>
       <HeaderHome />
       <ScrollView h={"full"}>
         <BannerHome />
-        <SwiperTitle title="Cafeterias por perto" />
+        <SwiperTitle title="Cafeterias" />
         <FlatList
           data={coffeeShops}
           renderItem={({ item }) => (
-            <CoffeeShopCard data={item} navigate={() => handleNavigate("CoffeeShop")} />
+            <CoffeeShopCard
+              data={item}
+              navigate={() => handleNavigate("CoffeeShop")}
+            />
           )}
           keyExtractor={(item: CoffeeShops) => item.id.toString()}
           horizontal
@@ -40,10 +57,15 @@ export default function Home() {
           paddingBottom={200}
         >
           {Drinks.map((item: CoffeeDrinks) => (
-            <CoffeeCard key={item.id} data={item} navigate={() => handleNavigate("Order")} />
+            <CoffeeCard
+              key={item.id}
+              data={item}
+              navigate={() => handleNavigate("Order")}
+            />
           ))}
         </View>
       </ScrollView>
     </VStack>
   );
-}
+};
+export default Home;
