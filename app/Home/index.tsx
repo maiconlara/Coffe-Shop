@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { FlatList, ScrollView, View, VStack } from "native-base";
-import { coffeeShops, Drinks } from "../../src/mocks/index";
+import { Drinks } from "../../src/mocks/index";
 import { handleNavigate, goBack } from "../../src/utils/handleNavigate";
 import HeaderHome from "../../src/components/HeaderHome";
 import { BannerHome } from "../../src/components/BannerHome";
@@ -10,7 +10,6 @@ import SwiperTitle from "../../src/components/SwiperTitle";
 import CoffeeCard from "../../src/components/CoffeeCard";
 
 import { CoffeeDrinks } from "../../src/interfaces/coffeeDrinks";
-import { CoffeeShops } from "../../src/interfaces/coffeeShops";
 
 import { CoffeeShop, getCoffeeShops } from "../../src/utils/getCoffeeShops";
 
@@ -41,7 +40,7 @@ const Home = () => {
               navigate={() => handleNavigate("CoffeeShop")}
             />
           )}
-          keyExtractor={(item: CoffeeShops) => item.id.toString()}
+          keyExtractor={(item: CoffeeShop) => item.name}
           horizontal
           showsHorizontalScrollIndicator={false}
           paddingLeft={8}
