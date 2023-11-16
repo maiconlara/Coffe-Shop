@@ -1,9 +1,9 @@
-import axios from 'axios'
-const apiId = '65002dc116b5865e842a9fff'
+import axios from "axios";
 
 export const api = axios.create({
-  baseURL: 'https://dummyapi.io/data/v1/',
+  baseURL: "http://localhost:3000",
   headers: {
-    'app-id': apiId,
+    "Content-Type": "application/json",
+    Accept: "application/json",
   },
-})
+});
