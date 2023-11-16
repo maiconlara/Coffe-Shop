@@ -32,6 +32,7 @@ import EssenceType from "../../src/components/OrderComponents/EssenceType";
 import Toppings from "../../src/components/OrderComponents/Toppings";
 import Observations from "../../src/components/OrderComponents/Observations";
 import BillingContainer from "../../src/components/OrderComponents/BillingContainer";
+import React from "react";
 
 const Order = () => {
   return (

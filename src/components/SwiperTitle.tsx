@@ -1,6 +1,7 @@
 import { Text, HStack } from "native-base";
 
 import ArrowRight from "../assets/arrow-right.svg";
+import React from "react";
 
 interface SwiperTitleProps {
   title: string;
@@ -12,17 +13,6 @@ const SwiperTitle = ({ title }: SwiperTitleProps) => {
       <Text fontSize="xl" fontFamily="text" fontWeight="700" color="black">
         {title}
       </Text>
-      <HStack alignItems="center" space={8}>
-        <Text
-          fontSize="sm"
-          fontFamily="text"
-          fontWeight="700"
-          color="green.500"
-        >
-          Ver Todos
-        </Text>
-        <ArrowRight width={20} height={20} />
-      </HStack>
     </HStack>
   );
 };
