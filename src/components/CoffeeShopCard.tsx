@@ -1,11 +1,12 @@
 import { Text, VStack, Image, HStack, Box, Pressable } from "native-base";
+import { CoffeeShop } from "../../src/utils/getCoffeeShops";
 
-import { CoffeeShops } from "../interfaces/coffeeShops";
 import Location from "../assets/location.svg";
 import Star from "../assets/star.svg";
+import React from "react";
 
 interface CoffeeShopsProps {
-  data: CoffeeShops;
+  data: CoffeeShop;
   navigate: () => void;
 }
 
@@ -48,12 +49,12 @@ const CoffeeShopCard = ({ data, navigate }: CoffeeShopsProps) => {
                 fontWeight="700"
                 color="white"
               >
-                {data?.rating}
+                {data.rating}
               </Text>
             </HStack>
           </Box>
           <Text fontSize="md" fontFamily="text" fontWeight="700" color="black">
-            {data?.name}
+            {data.name}
           </Text>
           <HStack>
             <Location width={20} height={20} />
@@ -63,7 +64,7 @@ const CoffeeShopCard = ({ data, navigate }: CoffeeShopsProps) => {
               fontWeight="400"
               color="black"
             >
-              {data?.distance} km
+              {data.distance} km
             </Text>
           </HStack>
         </VStack>

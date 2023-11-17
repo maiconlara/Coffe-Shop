@@ -9,7 +9,6 @@ import CoffeeShopCard from "../../src/components/CoffeeShopCard";
 import SwiperTitle from "../../src/components/SwiperTitle";
 import CoffeeCard from "../../src/components/CoffeeCard";
 
-import { CoffeeDrinks } from "../../src/interfaces/coffeeDrinks";
 
 import { CoffeeShop, getCoffeeShops } from "../../src/utils/getCoffeeShops";
 
