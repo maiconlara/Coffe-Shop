@@ -9,11 +9,12 @@ import CoffeeShopCard from "../../src/components/CoffeeShopCard";
 import SwiperTitle from "../../src/components/SwiperTitle";
 import CoffeeCard from "../../src/components/CoffeeCard";
 
-
 import { CoffeeShop, getCoffeeShops } from "../../src/utils/getCoffeeShops";
+import { Drink, getDrinks } from "../../src/utils/getDrinks";
 
 const Home = () => {
   const [coffeeShops, setCoffeeShops] = useState<CoffeeShop[]>([]);
+  const [drinks, setDrinks] = useState<Drink[]>([]);
 
   useEffect(() => {
     getCoffeeShops().then((data) => {
@@ -21,6 +22,13 @@ const Home = () => {
         console.log(data.error);
       } else {
         setCoffeeShops(data.result);
+      }
+    });
+    getDrinks().then((data) => {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        setDrinks(data.result);
       }
     });
   }, []);
@@ -54,7 +62,7 @@ const Home = () => {
           flex={1}
           paddingBottom={200}
         >
-          {Drinks.map((item: CoffeeDrinks) => (
+          {Drinks.map((item: Drink) => (
             <CoffeeCard
               key={item.id}
               data={item}
