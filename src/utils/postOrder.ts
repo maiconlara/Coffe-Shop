@@ -18,7 +18,7 @@ interface Order {
   user_id: string;
   valor_total: number;
   id_cafeteria: number;
-  data_compra: Date;
+  data_compra: string;
 }
 
 export const postOrder = async (Order: Order) => {
