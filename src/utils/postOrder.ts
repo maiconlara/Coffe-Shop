@@ -13,15 +13,18 @@ interface Product {
   topping: Topping;
 }
 
-interface Order {
+export interface Order {
   product: Product[];
-  user_id: string;
+  user_id: number;
   valor_total: number;
   id_cafeteria: number;
   data_compra: string;
 }
+export interface Pedido {
+  pedido: Order;
+}
 
-export const postOrder = async (Order: Order) => {
+export const postOrder = async (Order: Pedido) => {
   const apiUrl = "/api/pedido";
   await api.post<Order>(apiUrl, Order, {
     headers: {
