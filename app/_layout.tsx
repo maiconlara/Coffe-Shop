@@ -9,6 +9,7 @@ import { View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { fonts } from "../src/fonts";
 import React from "react";
+import { RootSiblingParent } from "react-native-root-siblings";
 
 export default function Layout() {
   const [isLoadedFonts] = useFonts({
@@ -21,58 +22,60 @@ export default function Layout() {
   }
   return (
     <NativeBaseProvider theme={fonts} isSSR={false}>
-      <View
-        style={{ position: "relative", flex: 1, backgroundColor: "#f7f7f7" }}
-      >
-        <StatusBar style="dark" translucent />
-
-        <Stack
-          screenOptions={{
-            contentStyle: {
-              backgroundColor: "transparent",
-            },
-          }}
+      <RootSiblingParent>
+        <View
+          style={{ position: "relative", flex: 1, backgroundColor: "#f7f7f7" }}
         >
-          <Stack.Screen
-            name="index"
-            options={{
-              headerShown: false,
-            }}
-          />
+          <StatusBar style="dark" translucent />
 
-          <Stack.Screen
-            name="Home/index"
-            options={{
-              headerShown: false,
+          <Stack
+            screenOptions={{
+              contentStyle: {
+                backgroundColor: "transparent",
+              },
             }}
-          />
+          >
+            <Stack.Screen
+              name="index"
+              options={{
+                headerShown: false,
+              }}
+            />
 
-          <Stack.Screen
-            name="CoffeeShop/index"
-            options={{
-              headerShown: false,
-            }}
-          />
-          <Stack.Screen
-            name="Order/index"
-            options={{
-              headerShown: false,
-            }}
-          />
-          <Stack.Screen
-            name="RatingPage/index"
-            options={{
-              headerShown: false,
-            }}
-          />
-          <Stack.Screen
-            name="End/index"
-            options={{
-              headerShown: false,
-            }}
-          />
-        </Stack>
-      </View>
+            <Stack.Screen
+              name="Home/index"
+              options={{
+                headerShown: false,
+              }}
+            />
+
+            <Stack.Screen
+              name="CoffeeShop/index"
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Stack.Screen
+              name="Order/index"
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Stack.Screen
+              name="RatingPage/index"
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Stack.Screen
+              name="End/index"
+              options={{
+                headerShown: false,
+              }}
+            />
+          </Stack>
+        </View>
+      </RootSiblingParent>
     </NativeBaseProvider>
   );
 }

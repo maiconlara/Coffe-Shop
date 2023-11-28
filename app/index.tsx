@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "expo-router";
 import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { styles } from "./styles";
 import logo from "../assets/adaptive-icon.png";
+import { handleMockLogin } from "../src/utils/handleMockLogin";
 
 const App = () => {
-  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
@@ -15,21 +18,24 @@ const App = () => {
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="Email"
-          keyboardType="number-pad"
           style={styles.input}
-          onChangeText={() => {}}
+          onChangeText={(text) => {
+            setEmail(text);
+          }}
         ></TextInput>
         <TextInput
           placeholder="Senha"
           secureTextEntry={true}
           style={styles.input}
-          onChangeText={() => {}}
+          onChangeText={(text) => {
+            setPassword(text);
+          }}
         ></TextInput>
         <TouchableOpacity
           activeOpacity={0.6}
           style={styles.button}
           onPress={() => {
-            router.push("Home");
+            handleMockLogin(email, password);
           }}
         >
           <Text style={styles.buttonText}>Entrar</Text>
