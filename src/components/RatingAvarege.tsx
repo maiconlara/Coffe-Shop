@@ -1,5 +1,5 @@
 import { HStack, Text, Progress } from "native-base";
-
+import React from "react";
 interface RatingAverageProps {
   starsQuantity: number;
   totalReviews: number;

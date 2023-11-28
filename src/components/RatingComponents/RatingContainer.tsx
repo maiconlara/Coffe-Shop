@@ -6,15 +6,11 @@ import { faStar, faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
 import { RatingType } from "../../../app/RatingPage";
 
 interface RatingContainerProps {
+  ratingNumber?: number;
   rating: RatingType[];
 }
 
-const RatingContainer = ({ rating }: RatingContainerProps) => {
-  function ratingAverage() {
-  const totalReviews = rating.reduce((acc, item) => acc + item.totalReviews, 0);
-  const totalStars = rating.reduce((acc, item) => acc + item.totalReviews * item.id, 0);
-  return totalStars / totalReviews;
-}
+const RatingContainer = ({ rating, ratingNumber }: RatingContainerProps) => {
   return (
     <HStack
       borderBottomWidth={2}
@@ -24,7 +20,7 @@ const RatingContainer = ({ rating }: RatingContainerProps) => {
     >
       <Center justifyContent={"space-between"} w={"1/2"}>
         <Text fontSize="5xl" fontFamily="text" fontWeight="700">
-          {ratingAverage().toFixed(1)}
+          {ratingNumber}
         </Text>
         <HStack>
           {[1, 2, 3].map((item) => (
