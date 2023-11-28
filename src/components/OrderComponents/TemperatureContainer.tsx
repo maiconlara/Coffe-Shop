@@ -1,6 +1,6 @@
 import { HStack, VStack, Text } from "native-base";
 import TemperatureButton from "../TemperatureButton";
-import { useState } from "react";
+import React, { useState } from "react";
 
 const TemperatureContainer = () => {
   const [selectedButton, setSelectedButton] = useState("");

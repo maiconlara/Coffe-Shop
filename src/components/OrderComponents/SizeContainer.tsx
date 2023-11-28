@@ -1,6 +1,6 @@
 import { VStack, Text, HStack } from "native-base";
 import SizeButton from "../SizeButton";
-import { useState } from "react";
+import  React, { useState } from "react";
 
 const SizeContainer = () => {
   const [selectedButton, setSelectedButton] = useState("");

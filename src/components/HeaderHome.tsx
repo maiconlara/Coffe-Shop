@@ -1,5 +1,5 @@
 import { Avatar, HStack, Text, VStack, Circle } from "native-base";
-
+import React from "react";
 import Bell from "../assets/bell.svg";
 
 const HeaderHome = () => {

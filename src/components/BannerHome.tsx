@@ -1,5 +1,5 @@
 import { Text, VStack, Image, HStack } from "native-base";
-
+import React from "react";
 import Coffee from "../assets/coffee.png";
 
 export function BannerHome() {
@@ -8,7 +8,7 @@ export function BannerHome() {
       marginX={8}
       marginBottom={4}
       px="4"
-      py="8"
+      py="4"
       borderRadius={12}
       bg="green.600"
       alignItems="center"

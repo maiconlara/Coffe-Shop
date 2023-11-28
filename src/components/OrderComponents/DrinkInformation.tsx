@@ -1,13 +1,18 @@
 import { VStack, Text } from "native-base";
+import React from "react";
+import { Drink } from "../../utils/getDrinks";
 
-const DrinkInformation = () => {
+interface DrinkInformationProps {
+  drink?: Drink;
+}
+const DrinkInformation = ({ drink }: DrinkInformationProps) => {
   return (
     <VStack>
       <Text fontSize="2xl" fontFamily="text" fontWeight="700">
-        Drink
+        {drink?.name}
       </Text>
       <Text fontSize="md" fontFamily="text" fontWeight="400">
-        R$ 5.00
+        R$ {drink?.price}
       </Text>
     </VStack>
   );

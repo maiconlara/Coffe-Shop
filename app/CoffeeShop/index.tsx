@@ -22,10 +22,12 @@ import { handleNavigate, goBack } from "../../src/utils/handleNavigate";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { CoffeeShop as CoffeeShopType } from "../../src/utils/getCoffeeShops";
 import { Drink, getDrinks } from "../../src/utils/getDrinks";
+import { ActivityIndicator } from "react-native";
 
 const CoffeeShop = () => {
   const [data, setData] = useState<CoffeeShopType>();
   const [drinks, setDrinks] = useState<Drink[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,8 +48,21 @@ const CoffeeShop = () => {
       } else {
         setDrinks(data.result);
       }
+      setIsLoading(false);
     });
   }, []);
+
+  const storeData = async (value: Drink) => {
+    try {
+      const jsonValue = JSON.stringify(value);
+      await AsyncStorage.setItem("drink", jsonValue);
+    } catch (e) {}
+  };
+
+  const handleOrderNavigate = async (data: Drink) => {
+    await storeData(data);
+    handleNavigate("Order");
+  };
 
   return (
     <ScrollView>
@@ -141,13 +156,26 @@ const CoffeeShop = () => {
             flex={1}
             paddingBottom={10}
           >
-            {drinks.map((item: Drink) => (
-              <CoffeeCard
-                key={item.id}
-                data={item}
-                navigate={() => handleNavigate("Order")}
-              />
-            ))}
+            {isLoading ? (
+              <View
+                style={{
+                  flex: 1,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginTop: 50,
+                }}
+              >
+                <ActivityIndicator size="large" color="#16a34a" />
+              </View>
+            ) : (
+              drinks.map((item: Drink) => (
+                <CoffeeCard
+                  key={item.id}
+                  data={item}
+                  navigate={() => handleOrderNavigate(item)}
+                />
+              ))
+            )}
           </View>
         </VStack>
       </VStack>

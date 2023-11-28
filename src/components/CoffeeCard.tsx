@@ -1,9 +1,9 @@
 import { Box, HStack, Pressable, VStack, Image, Text } from "native-base";
-import { CoffeeDrinks } from "../interfaces/coffeeDrinks";
 import React from "react";
+import { Drink } from "../utils/getDrinks";
 
 interface CoffeeCardProps {
-  data: CoffeeDrinks;
+  data: Drink;
   navigate: () => void;
 }
 

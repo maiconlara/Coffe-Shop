@@ -3,10 +3,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { HStack, Text, Center } from "native-base";
 import { useCallback, useState } from "react";
 import { TouchableOpacity } from "react-native";
+import React from "react";
 
-const QuantityContainer = () => {
-  const [quantity, setQuantity] = useState(1);
+interface QuantityContainerProps {
+  quantity: number;
+  setQuantity: React.Dispatch<React.SetStateAction<number>>;
+}
 
+const QuantityContainer = ({
+  quantity,
+  setQuantity,
+}: QuantityContainerProps) => {
   const handleIncrement = useCallback(() => {
     setQuantity((prevQuantity) => prevQuantity + 1);
   }, []);

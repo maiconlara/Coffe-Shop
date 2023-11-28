@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from "react";
 
-import { FlatList, ScrollView, View, VStack } from "native-base";
-import { handleNavigate, goBack } from "../../src/utils/handleNavigate";
+import { FlatList, ScrollView, VStack } from "native-base";
+import { handleNavigate } from "../../src/utils/handleNavigate";
 import HeaderHome from "../../src/components/HeaderHome";
 import { BannerHome } from "../../src/components/BannerHome";
 import CoffeeShopCard from "../../src/components/CoffeeShopCard";
 import SwiperTitle from "../../src/components/SwiperTitle";
-import CoffeeCard from "../../src/components/CoffeeCard";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { CoffeeShop, getCoffeeShops } from "../../src/utils/getCoffeeShops";
-import { Drink, getDrinks } from "../../src/utils/getDrinks";
+import { ActivityIndicator, View } from "react-native";
 
 const Home = () => {
   const [coffeeShops, setCoffeeShops] = useState<CoffeeShop[]>([]);
-  const [drinks, setDrinks] = useState<Drink[]>([]);
-
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     getCoffeeShops().then((data) => {
       if (data.error) {
@@ -23,13 +21,7 @@ const Home = () => {
       } else {
         setCoffeeShops(data.result);
       }
-    });
-    getDrinks().then((data) => {
-      if (data.error) {
-        console.log(data.error);
-      } else {
-        setDrinks(data.result);
-      }
+      setIsLoading(false);
     });
   }, []);
 
@@ -51,37 +43,35 @@ const Home = () => {
       <ScrollView h={"full"}>
         <BannerHome />
         <SwiperTitle title="Cafeterias" />
-        <FlatList
-          data={coffeeShops}
-          renderItem={({ item }) => (
-            <CoffeeShopCard
-              data={item}
-              navigate={() => handleCoffeeNavigate(item)}
-            />
-          )}
-          keyExtractor={(item: CoffeeShop) => item.name}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          paddingLeft={8}
-          paddingTop={3}
-        />
-        <SwiperTitle title="Mais pedidos" />
-        <View
-          flexDirection="row"
-          flexWrap="wrap"
-          justifyContent="space-between"
-          px={8}
-          flex={1}
-          paddingBottom={200}
-        >
-          {drinks.map((item: Drink) => (
-            <CoffeeCard
-              key={item.id}
-              data={item}
-              navigate={() => handleNavigate("Order")}
-            />
-          ))}
-        </View>
+
+        {isLoading ? (
+          <View
+            style={{
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: 50,
+            }}
+          >
+            <ActivityIndicator size="large" color="#16a34a" />
+          </View>
+        ) : (
+          <FlatList
+            data={coffeeShops}
+            renderItem={({ item }) => (
+              <CoffeeShopCard
+                data={item}
+                navigate={() => handleCoffeeNavigate(item)}
+              />
+            )}
+            keyExtractor={(item: CoffeeShop) => item.name}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            paddingLeft={8}
+            paddingTop={3}
+            paddingBottom={32}
+          />
+        )}
       </ScrollView>
     </VStack>
   );
