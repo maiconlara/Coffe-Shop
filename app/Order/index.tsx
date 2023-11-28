@@ -1,5 +1,5 @@
 import Header from "../../src/components/Header";
-import { goBack } from "../../src/utils/handleNavigate";
+import { goBack, handleNavigate } from "../../src/utils/handleNavigate";
 import {
   AspectRatio,
   HStack,
@@ -117,6 +117,8 @@ const Order = () => {
     await AsyncStorage.setItem("pedido", JSON.stringify(pedidoFinal));
     console.log(pedidoFinal);
     await postOrder(pedidoFinal);
+
+    handleNavigate("End");
   };
 
   return (
