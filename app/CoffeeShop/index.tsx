@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   VStack,
@@ -12,17 +12,42 @@ import {
 } from "native-base";
 import CoffeeShopInfoBanner from "../../src/components/CoffeShopInfoBanner";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faChevronRight, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import CoffeeCard from "../../src/components/CoffeeCard";
-import { Drinks } from "../../src/mocks/index";
 
 import Location from "../../src/assets/location.svg";
 import Star from "../../src/assets/star.svg";
-import { CoffeeDrinks } from "../../src/interfaces/coffeeDrinks";
 
 import { handleNavigate, goBack } from "../../src/utils/handleNavigate";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { CoffeeShop as CoffeeShopType } from "../../src/utils/getCoffeeShops";
+import { Drink, getDrinks } from "../../src/utils/getDrinks";
 
 const CoffeeShop = () => {
+  const [data, setData] = useState<CoffeeShopType>();
+  const [drinks, setDrinks] = useState<Drink[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const jsonValue = await AsyncStorage.getItem("coffeeshop");
+        const parsedData = jsonValue != null ? JSON.parse(jsonValue) : [];
+        setData(parsedData);
+      } catch (e) {}
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    getDrinks().then((data) => {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        setDrinks(data.result);
+      }
+    });
+  }, []);
 
   return (
     <ScrollView>
@@ -32,7 +57,7 @@ const CoffeeShop = () => {
           backgroundColor="transparent"
           translucent
         />
-        <CoffeeShopInfoBanner goBack={() => goBack()} />
+        <CoffeeShopInfoBanner image={data?.img} goBack={() => goBack()} />
         <VStack px={8} py={2} space={4}>
           <Center
             paddingBottom={2}
@@ -46,7 +71,7 @@ const CoffeeShop = () => {
               fontWeight="700"
               color="black"
             >
-              Coffee Shop
+              {data?.name}
             </Text>
           </Center>
           <Pressable onPress={() => handleNavigate("RatingPage")}>
@@ -65,7 +90,7 @@ const CoffeeShop = () => {
                   fontWeight="700"
                   color="black"
                 >
-                  3.8
+                  {data?.rating}
                 </Text>
                 <Text
                   fontSize="sm"
@@ -95,7 +120,7 @@ const CoffeeShop = () => {
                   fontWeight="700"
                   color="black"
                 >
-                  2.0 km
+                  {data?.distance} km
                 </Text>
                 <Text
                   fontSize="sm"
@@ -116,7 +141,7 @@ const CoffeeShop = () => {
             flex={1}
             paddingBottom={10}
           >
-            {Drinks.map((item: CoffeeDrinks) => (
+            {drinks.map((item: Drink) => (
               <CoffeeCard
                 key={item.id}
                 data={item}
@@ -128,5 +153,5 @@ const CoffeeShop = () => {
       </VStack>
     </ScrollView>
   );
-}
+};
 export default CoffeeShop;

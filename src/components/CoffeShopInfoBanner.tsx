@@ -8,13 +8,14 @@ import {
 } from "native-base";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faHeart, faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import React, { useState } from "react";
 
 interface CoffeeShopInfoBannerProps {
+  image?: string;
   goBack: () => void;
 }
 
-const CoffeShopInfoBanner = ({ goBack }: CoffeeShopInfoBannerProps) => {
+const CoffeShopInfoBanner = ({ goBack, image }: CoffeeShopInfoBannerProps) => {
   const [isLiked, setIsLikes] = useState(false);
 
   const heartBtn = () => {
@@ -25,7 +26,7 @@ const CoffeShopInfoBanner = ({ goBack }: CoffeeShopInfoBannerProps) => {
       <AspectRatio>
         <Image
           source={{
-            uri: "https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80",
+            uri: image,
           }}
           alt="coffe"
         />
